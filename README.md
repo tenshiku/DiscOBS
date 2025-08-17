@@ -1,8 +1,6 @@
 # 🎮 DiscOBS - Discord OBS Control Bot
 
-**Control your OBS Studio remotely with Discord!**
-
-Perfect for IRL streaming, remote streaming setups, or just convenient OBS control from your phone.
+**Control your OBS Studio remotely with Discord**
 
 ## ✨ Features
 
