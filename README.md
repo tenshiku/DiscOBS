@@ -1,5 +1,12 @@
 # 🎮 DiscOBS - Discord OBS Control Bot
 
+![Python](https://img.shields.io/badge/python-3.7+-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg)
+![Discord](https://img.shields.io/badge/discord-bot-7289da.svg)
+![OBS](https://img.shields.io/badge/OBS-WebSocket-purple.svg)
+![Status](https://img.shields.io/badge/status-active-brightgreen.svg)
+
 **I created this bot to solve a problem I had while IRL streaming. When I travel with my streaming setup (laptop + IRL backpack), I needed a way to control OBS remotely without dealing with port forwarding at Airbnbs or hotels.**
 
 **The solution was simple: run a Discord bot locally on my laptop that connects to OBS WebSocket, then control everything from my phone through Discord. No network configuration needed, just start the bot and go live from anywhere.**
