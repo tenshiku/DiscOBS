@@ -16,7 +16,7 @@ DISCORD_TOKEN = "YOUR_DISCORD_BOT_TOKEN_HERE"
 # Configure these in OBS: Tools → WebSocket Server Settings
 OBS_HOST = "localhost"  # Don't change this unless OBS is on another computer
 OBS_PORT = 4455         # Default OBS WebSocket port
-OBS_PASSWORD = None     # Set to "your_password" if you enabled authentication in OBS
+OBS_PASSWORD = "your_obs_password"     # Set to your OBS WebSocket password, or "" if disabled
 
 # =========================================
 # QUICK ACTIONS CONFIGURATION
@@ -98,3 +98,100 @@ CUSTOM_QUICK_ACTIONS = {
     #     "success_message": "💬 **Chat Time** - Let's talk!"
     # }
 }
+
+# =========================================
+# CONNECTION MONITORING CONFIGURATION
+# =========================================
+CONNECTION_MONITORING = {
+    "enabled": False,  # Set to True for IRL streaming with Belabox
+    "check_interval": 15,  # Check every 15 seconds
+    "timeout_threshold": 60,  # Switch to failover after 60 seconds of failure
+    "fallback_scene": "BRB",  # Scene to switch to when connection fails
+    "return_behavior": "previous",  # "previous", "manual", or specific scene name
+    "discord_notifications": True  # Send Discord notifications on connection changes
+}
+
+# =========================================
+# BELABOX CLOUD MONITORING (Optional)
+# =========================================
+BELABOX_MONITORING = {
+    "enabled": False,  # Set to True if you use Belabox Cloud
+    "stats_url": "",  # Your Belabox Cloud stats URL from your account
+    "bitrate_threshold": 1000,  # Minimum bitrate (kbps) before considering connection failed
+    "rtt_threshold": 2000,  # Maximum RTT (ms) before considering connection failed
+    "dropped_threshold": 100  # Maximum dropped packets before considering connection failed
+}
+
+# =========================================
+# SETUP INSTRUCTIONS
+# =========================================
+"""
+QUICK SETUP GUIDE:
+
+1. DISCORD BOT:
+   - Go to https://discord.com/developers/applications
+   - Create a new application and bot
+   - Copy the bot token and paste it in DISCORD_TOKEN above
+   - Invite bot to your server with Send Messages permission
+
+2. OBS WEBSOCKET:
+   - In OBS: Tools → WebSocket Server Settings
+   - Enable WebSocket Server
+   - Note the port (usually 4455)
+   - Set a password or leave blank, update OBS_PASSWORD above
+
+3. CUSTOMIZE SCENES:
+   - Look at your OBS scene names
+   - Update the "scene_name" values above to match exactly
+   - Scene names are case-sensitive!
+
+4. BELABOX SETUP (Optional):
+   - If you use Belabox Cloud, set enabled to True
+   - Get your stats URL from your Belabox Cloud account
+   - Adjust thresholds based on your connection quality
+
+5. RUN THE BOT:
+   - Save this file
+   - Run: python discobs.py
+   - In Discord, type: !obs
+
+EXAMPLE SCENE SETUP:
+If your OBS scenes are named:
+- "Stream Starting"
+- "Be Right Back" 
+- "Stream Ending"
+
+Then update the config like this:
+QUICK_ACTIONS = {
+    "brb": {
+        "scene_name": "Be Right Back",  # ← Changed to match your scene
+        "button_label": "⏸️ BRB",
+        # ... rest stays the same
+    },
+    "intro": {
+        "scene_name": "Stream Starting",  # ← Changed to match your scene
+        "button_label": "🎬 Start",        # ← You can also change button text
+        # ... rest stays the same
+    }
+}
+
+BELABOX THRESHOLD RECOMMENDATIONS:
+For typical IRL streaming (2-5 Mbps):
+- bitrate_threshold: 1000 (switch if below 1 Mbps)
+- rtt_threshold: 2000 (switch if above 2 seconds latency)
+- dropped_threshold: 100 (switch if more than 100 dropped packets)
+
+For high-quality streams (5-10 Mbps):
+- bitrate_threshold: 2000 (switch if below 2 Mbps)
+- rtt_threshold: 1500 (switch if above 1.5 seconds latency)
+- dropped_threshold: 50 (switch if more than 50 dropped packets)
+
+COMMANDS:
+- !obs - Main control panel
+- !stats - Stream statistics
+- !record - Recording controls
+- !monitor - Connection monitoring
+- !debug_belabox - Test Belabox connection
+
+Need help? Check the README or open an issue on GitHub!
+"""
