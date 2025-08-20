@@ -1,0 +1,125 @@
+name: Feature Request
+description: Suggest a new feature or enhancement for DiscOBS
+title: "[FEATURE] "
+labels: ["enhancement"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a new feature! Please provide as much detail as possible to help us understand your request.
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Pre-submission Checklist
+      description: Please confirm you've completed these steps
+      options:
+        - label: I've searched existing issues to make sure this hasn't been requested
+          required: true
+        - label: I've checked the documentation to make sure this feature doesn't already exist
+          required: true
+
+  - type: dropdown
+    id: feature-type
+    attributes:
+      label: Feature Category
+      description: What type of feature are you requesting?
+      options:
+        - New Discord command
+        - New OBS control feature
+        - Connection monitoring improvement
+        - User interface enhancement
+        - Performance improvement
+        - Integration with other services
+        - Configuration option
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Feature Summary
+      description: Brief description of the feature you'd like to see
+      placeholder: "Add a command to control OBS filters"
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Description
+      description: What problem would this feature solve? What's your current workaround?
+      placeholder: |
+        Currently I have to manually open OBS to enable/disable filters during stream.
+        I'd like to control this remotely from Discord while streaming IRL.
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: How do you envision this feature working?
+      placeholder: |
+        Add a !filters command that shows buttons for each filter source.
+        Similar to the audio controls but for video filters.
+        Maybe add quick action buttons for common filter toggles.
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use Case
+      description: When and how would you use this feature?
+      placeholder: |
+        - IRL streaming: Toggle noise reduction when entering noisy areas
+        - Gaming: Enable/disable overlays for different games
+        - Creative streams: Toggle different visual effects during art creation
+
+  - type: dropdown
+    id: streaming-type
+    attributes:
+      label: Streaming Type
+      description: What type of streaming would this feature benefit?
+      multiple: true
+      options:
+        - Desktop streaming
+        - IRL/Mobile streaming
+        - Multi-PC setups
+        - Team/group streaming
+        - All streaming types
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority Level
+      description: How important is this feature to you?
+      options:
+        - Critical (blocking my workflow)
+        - High (would significantly improve my workflow)
+        - Medium (nice to have improvement)
+        - Low (minor convenience)
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternative Solutions
+      description: Are there any workarounds or alternative approaches you've considered?
+      placeholder: |
+        - Using OBS hotkeys (but can't use from phone)
+        - Third-party OBS plugins (but want Discord integration)
+        - Manual control (but defeats purpose of remote control)
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other information, mockups, or examples that would help
+      placeholder: |
+        - Screenshots of similar features in other tools
+        - Examples of how other bots handle this
+        - Links to relevant OBS documentation
+        - Mockups of the proposed interface
